@@ -1,7 +1,7 @@
 | Vai trò | Họ và tên | Lớp | Mã sinh viên |
 | --- | --- | --- | --- |
 | Nhóm trưởng | Nguyễn Hoài Nam | D18CNPM2 | 23810310082 |
-| Thành viên | Nguyễn Huy Cường | D18CNM2 | 23810310084 |
+| Thành viên | Nguyễn Huy Cường | D18CNPM2 | 23810310084 |
 | Thành viên | Phạm Tiến Vinh | D18CNPM2 | 23810310085 |
 
 Link tài liệu cho SRS
