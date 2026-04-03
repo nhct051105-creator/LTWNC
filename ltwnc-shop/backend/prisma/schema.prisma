@@ -1,0 +1,180 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Role enumeration
+enum UserRole {
+  ADMIN
+  USER
+  VENDOR
+}
+
+// User model
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  password  String
+  fullName  String  @map("full_name")
+  phone     String?
+  role      UserRole @default(USER)
+  isActive  Boolean @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  addresses Address[]
+  carts     Cart[]
+  orders    Order[]
+  auditLogs AuditLog[]
+
+  @@map("users")
+}
+
+// Address model
+model Address {
+  id        Int     @id @default(autoincrement())
+  userId    Int     @map("user_id")
+  street    String
+  ward      String
+  district  String
+  city      String
+  zipCode   String? @map("zip_code")
+  isDefault Boolean @default(false) @map("is_default")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("addresses")
+  @@index([userId])
+}
+
+// Category model
+model Category {
+  id        Int     @id @default(autoincrement())
+  name      String  @unique
+  slug      String  @unique
+  desc      String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  products Product[]
+
+  @@map("categories")
+}
+
+// Product model
+model Product {
+  id          Int     @id @default(autoincrement())
+  categoryId  Int     @map("category_id")
+  name        String
+  slug        String  @unique
+  desc        String?
+  price       Float
+  originPrice Float? @map("origin_price")
+  stock       Int @default(0)
+  image       String?
+  isActive    Boolean @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  category  Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  cartItems CartItem[]
+  orderItems OrderItem[]
+
+  @@map("products")
+  @@index([categoryId])
+}
+
+// Cart model
+model Cart {
+  id        Int     @id @default(autoincrement())
+  userId    Int     @unique @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items     CartItem[]
+
+  @@map("carts")
+}
+
+// CartItem model
+model CartItem {
+  id        Int     @id @default(autoincrement())
+  cartId    Int     @map("cart_id")
+  productId Int     @map("product_id")
+  quantity  Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  cart    Cart @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("cart_items")
+  @@index([cartId])
+  @@index([productId])
+  @@unique([cartId, productId])
+}
+
+// Order model
+model Order {
+  id            Int     @id @default(autoincrement())
+  userId        Int     @map("user_id")
+  status        String @default("pending") // pending, confirmed, shipped, delivered, cancelled
+  totalPrice    Float @map("total_price")
+  shippingAddr  String  @map("shipping_addr")
+  phoneNumber   String  @map("phone_number")
+  note          String?
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  user       User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items      OrderItem[]
+
+  @@map("orders")
+  @@index([userId])
+}
+
+// OrderItem model
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  orderId   Int     @map("order_id")
+  productId Int     @map("product_id")
+  quantity  Int
+  price     Float   // price at time of order
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  order   Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("order_items")
+  @@index([orderId])
+  @@index([productId])
+}
+
+// AuditLog model
+model AuditLog {
+  id        Int     @id @default(autoincrement())
+  userId    Int?    @map("user_id")
+  action    String  // created, updated, deleted, login
+  entity    String  // user, product, order, etc.
+  entityId  Int?    @map("entity_id")
+  oldValues String? @map("old_values") // JSON string
+  newValues String? @map("new_values") // JSON string
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("audit_logs")
+  @@index([userId])
+  @@index([entity, entityId])
+}
