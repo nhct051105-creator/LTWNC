@@ -4,6 +4,7 @@
 - Mỗi module nên có một người phụ trách chính để tránh chồng chéo công việc.
 - Trước khi code, cần chốt rõ API, database và phạm vi từng người.
 - Nếu sửa phần chung, phải báo trước để tránh đụng vào code của người khác.
+- Commit message phải rõ ràng, theo quy ước để dễ theo dõi history.
 
 ## Khi làm migration và seed
 - Migration không sửa trực tiếp sau khi đã merge, nếu cần đổi thì tạo migration mới.

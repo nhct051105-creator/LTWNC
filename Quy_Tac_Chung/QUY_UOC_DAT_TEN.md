@@ -6,12 +6,11 @@
 - Không đặt tên chung chung như `new`, `test`, `temp`, `abc`.
 - Tên thư mục nên phản ánh đúng chức năng, ví dụ: `auth`, `product`, `order`, `shared`.
 
-## 2) Tên branch Git
-- `feature/ten-chuc-nang`
-- `fix/ten-loi`
-- `refactor/ten-phan`
-- `chore/cau-hinh`
-- Không dùng tên quá dài hoặc không rõ mục tiêu.
+## 2) Quy ước commit message
+- Dùng định dạng: `type: mo_ta_ngan`
+- Các type: `feat`, `fix`, `refactor`, `chore`, `docs`, `style`, `test`
+- Ví dụ: `feat: add product search`, `fix: resolve login bug`, `chore: update dependencies`
+- Không dùng commit message quá dài hoặc không rõ mục tiêu.
 
 ## 3) Tên migration và seed
 - Migration phải có ý nghĩa, ví dụ: `init_schema`, `add_products_table`.
@@ -37,3 +36,4 @@
 - Một kiểu đặt tên phải dùng xuyên suốt trong cả dự án.
 - Nếu đã chốt cách viết thì không đổi lung tung giữa tiếng Việt và tiếng Anh.
 - Tên phải đọc lên hiểu ngay vai trò của nó.
+- Commit message phải rõ ràng, ngắn gọn, dễ hiểu mục đích thay đổi.
