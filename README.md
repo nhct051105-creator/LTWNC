@@ -67,6 +67,90 @@ LTWNC/
 
 ---
 
+## 🗄️ Cấu trúc Database
+
+### Entity Relationship Diagram (ERD)
+
+```
+┌─────────────────┐         ┌──────────────────┐
+│     USERS       │◄────────┤    ADDRESSES     │
+├─────────────────┤         ├──────────────────┤
+│ id (PK)         │         │ id (PK)          │
+│ email (UNIQUE)  │         │ user_id (FK)     │
+│ password        │         │ street           │
+│ full_name       │         │ ward             │
+│ phone           │         │ district         │
+│ role            │         │ city             │
+│ is_active       │         │ zip_code         │
+│ created_at      │         │ is_default       │
+│ updated_at      │         │ created_at       │
+└─────────────────┘         │ updated_at       │
+        │                   └──────────────────┘
+        │
+        ├──────────────────┬─────────────────┬──────────────────┐
+        │                  │                 │                  │
+        ▼                  ▼                 ▼                  ▼
+┌───────────────────┐ ┌──────────────┐ ┌──────────────┐ ┌─────────────────┐
+│   CARTS           │ │    ORDERS    │ │ AUDIT_LOGS   │ │  (placeholder)  │
+├───────────────────┤ ├──────────────┤ ├──────────────┤ └─────────────────┘
+│ id (PK)           │ │ id (PK)      │ │ id (PK)      │
+│ user_id (FK)      │ │ user_id (FK) │ │ user_id (FK) │
+│ product_id (FK)   │ │ total_amount │ │ action       │
+│ quantity          │ │ status       │ │ table_name   │
+│ created_at        │ │ shipping_... │ │ record_id    │
+│ updated_at        │ │ created_at   │ │ changes      │
+└───────────────────┘ │ updated_at   │ │ created_at   │
+        │             └──────────────┘ └──────────────┘
+        │                     │
+        │                     ├──────────────┬────────────────┐
+        │                     │              │                │
+        │                     ▼              ▼                ▼
+        │          ┌────────────────────┐ ┌──────────────┐ ┌──────────────┐
+        │          │   ORDER_ITEMS      │ │   PAYMENTS   │ │   PRODUCTS   │
+        │          ├────────────────────┤ ├──────────────┤ ├──────────────┤
+        │          │ id (PK)            │ │ id (PK)      │ │ id (PK)      │
+        │          │ order_id (FK)      │ │ order_id(FK) │ │ name         │
+        ├─────────▶│ product_id (FK)    │ │ amount       │ │ description  │
+        │          │ quantity           │ │ status       │ │ price        │
+        │          │ price              │ │ method       │ │ stock        │
+        │          │ created_at         │ │ created_at   │ │ category_..  │
+        │          └────────────────────┘ │ updated_at   │ │ image_url    │
+        │                                  └──────────────┘ │ created_at   │
+        │                                                   │ updated_at   │
+        │                                                   └──────────────┘
+        │                                                           ▲
+        └───────────────────────────────────────────────────────────┘
+
+┌────────────────────┐
+│   CATEGORIES       │
+├────────────────────┤
+│ id (PK)            │
+│ name               │
+│ description        │
+│ created_at         │
+│ updated_at         │
+└────────────────────┘
+        ▲
+        │
+(products.category_id FK)
+```
+
+### Thông tin chi tiết các bảng
+
+| Bảng | Mô tả | Trường chính |
+| :--- | :--- | :--- |
+| **users** | Quản lý người dùng | id, email, password, role |
+| **addresses** | Địa chỉ giao hàng | id, user_id, street, city |
+| **categories** | Danh mục sản phẩm | id, name, description |
+| **products** | Sản phẩm | id, name, price, stock, category_id |
+| **carts** | Giỏ hàng | id, user_id, product_id, quantity |
+| **orders** | Đơn hàng | id, user_id, total_amount, status |
+| **order_items** | Chi tiết đơn hàng | id, order_id, product_id, quantity, price |
+| **payments** | Thanh toán | id, order_id, amount, status, method |
+| **audit_logs** | Nhật ký hoạt động | id, user_id, action, changes |
+
+---
+
 ## 🚀 Hướng dẫn cài đặt
 
 ### 📋 Yêu cầu hệ thống
