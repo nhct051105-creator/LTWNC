@@ -65,6 +65,16 @@ Dự án được chia thành 8 giai đoạn chính với thời gian thực hi�
 - Tạo form đăng ký với validation
 - Thiết lập authentication context
 
+#### Minh họa ngày 1
+
+- Ảnh 1: giao diện trang chủ và danh mục sản phẩm
+- Ảnh 2: form đăng nhập
+- Ảnh 3: form đăng ký
+
+![Trang chủ](image.png)
+![Đăng nhập](image-1.png)
+![Đăng ký](image-2.png)
+
 ### Ngày 2 (8/4/2026)
 
 - Tạo dữ liệu sản phẩm local (JSON)
@@ -74,3 +84,5 @@ Dự án được chia thành 8 giai đoạn chính với thời gian thực hi�
 - Thêm chức năng lọc theo danh mục
 - Xây dựng trang chi tiết sản phẩm
 - Thêm gallery ảnh, thông tin sản phẩm
+  ![Sản phẩm](image-3.png)
+  ![Chi tiết sản phẩm](image-4.png)
