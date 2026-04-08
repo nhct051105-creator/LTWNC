@@ -6,6 +6,8 @@ import { useAuth } from '../../context/AuthContext';
 import Header from '../../components/ui/Header/Header';
 import Footer from '../../components/ui/Footer/Footer';
 import ProductCard from '../../components/ui/ProductCard/ProductCard';
+import { products } from '../../data/products';
+import { formatCurrency } from '../../utils/format';
 import './Home.css';
 
 const Home = () => {
@@ -24,11 +26,11 @@ const Home = () => {
   const loadProducts = async () => {
     try {
       setLoading(true);
-      // TODO: Replace with actual API call when backend is ready
-      console.log('Loading products...');
+      // TODO: Connect to API when backend is ready
+      // loadProducts();
       
-      // Placeholder: empty products
-      setProducts([]);
+      // Placeholder: set empty products for now
+      setProducts(products.slice(0, 6)); // Show first 6 products
     } catch (error) {
       logger.error('Failed to load products:', error);
       setProducts([]);
@@ -154,11 +156,12 @@ const Home = () => {
                 <ProductCard
                   key={product.id}
                   image={product.imageUrl || product.image || 'https://via.placeholder.com/300'}
+                  fallbackImages={product.images}
                   alt={product.name}
                   category={product.category || product.type}
                   name={product.name}
-                  currentPrice={`${product.price?.toLocaleString()}đ`}
-                  oldPrice={product.oldPrice ? `${product.oldPrice.toLocaleString()}đ` : undefined}
+                  currentPrice={formatCurrency(product.price)}
+                  oldPrice={product.oldPrice ? formatCurrency(product.oldPrice) : undefined}
                   link={`/product/${product.id}`}
                 />
               ))

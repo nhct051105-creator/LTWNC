@@ -4,6 +4,7 @@ import './ProductCard.css';
 
 const ProductCard = ({
   image,
+  fallbackImages = [],
   alt,
   category,
   name,
@@ -13,9 +14,23 @@ const ProductCard = ({
   link = '#'
 }) => {
   const [imageError, setImageError] = React.useState(false);
-  
+  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+  const images = React.useMemo(
+    () => [image, ...fallbackImages].filter(Boolean),
+    [image, fallbackImages]
+  );
+
+  React.useEffect(() => {
+    setCurrentImageIndex(0);
+    setImageError(false);
+  }, [images]);
+
   const handleImageError = () => {
-    setImageError(true);
+    if (currentImageIndex + 1 < images.length) {
+      setCurrentImageIndex((prevIndex) => prevIndex + 1);
+    } else {
+      setImageError(true);
+    }
   };
 
   return (
@@ -27,10 +42,10 @@ const ProductCard = ({
               {badge.text}
             </span>
           )}
-          {!imageError ? (
+          {!imageError && images[currentImageIndex] ? (
             <img 
               alt={alt} 
-              src={image}
+              src={images[currentImageIndex]}
               onError={handleImageError}
               style={{ objectFit: 'cover', width: '100%', height: '100%' }}
             />

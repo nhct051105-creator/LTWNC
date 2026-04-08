@@ -1,115 +1,76 @@
-# Tiến Độ Làm Frontend Theo Từng Ngày - Nguyễn Huy Cường
+# Báo Cáo Tiến Độ Dự Án Frontend LTWNC Shop
 
-## Tổng quan
+## Kế Hoạch Triển Khai
 
-- Dự án: LTWNC Shop Frontend
-- Công nghệ: React + Vite
-- Cách làm: Từng ngày tập trung vào một phần giao diện, cuối cùng mới thêm API
-- Thời gian: Chia theo từng ngày
+Dự án được chia thành 8 giai đoạn chính với thời gian thực hiện dự kiến như sau:
 
-## Ngày 1: Layout và Home (Hoàn thành)
+### Giai Đoạn 1: Thiết Lập Nền Tảng (3/4/2026)
 
-### Hoàn thành:
+- Thiết lập cấu trúc project và môi trường phát triển
+- Xây dựng layout cơ bản (header, footer, navigation)
+- Cài đặt hệ thống routing cho ứng dụng
 
-- Xóa toàn bộ giao diện cũ và API services
-- Tạo Layout.jsx: Header với logo và navigation, main content, footer
-- Tạo Layout.css: CSS responsive cho layout
-- Tạo HomePage.jsx: Trang chủ đơn giản với thông tin cơ bản
-- Cập nhật App.jsx với React Router và nested routes
-- Ghi đè App.css với CSS tối giản
-- Chạy Vite thành công trên localhost:5173
+### Giai Đoạn 2: Phát Triển Trang Chủ
 
-### Ghi chú:
+- Thiết kế và triển khai giao diện trang chủ
+- Tích hợp hero section và danh mục sản phẩm
+- Hiển thị sản phẩm nổi bật và khuyến mãi
 
-- Giao diện ngày 1 hoàn thành, đơn giản, không có API
-- Layout khung sẵn sàng cho các trang khác
-- Navigation cơ bản với các link
+### Giai Đoạn 3: Hệ Thống Xác Thực
 
-## Ngày 2: Products và ProductDetail (Chưa làm)
+- Phát triển form đăng nhập với validation
+- Phát triển form đăng ký người dùng mới
+- Thiết lập context quản lý trạng thái authentication
 
-### Kế hoạch:
+### Giai Đoạn 4: Quản Lý Dữ Liệu Sản Phẩm
 
-- Tạo ProductsPage.jsx: Danh sách sản phẩm với dữ liệu mẫu
-- Tạo ProductDetailPage.jsx: Chi tiết sản phẩm theo ID
-- Thêm CSS cho product grid và card
-- Cập nhật routing
+- Tạo cơ sở dữ liệu sản phẩm dạng JSON
+- Thiết lập cấu trúc dữ liệu chuẩn cho sản phẩm
+- Chuẩn bị và tối ưu hình ảnh sản phẩm
 
-### Ghi chú:
+### Giai Đoạn 5: Trang Danh Mục Sản Phẩm
 
-- Sẽ thêm dữ liệu mẫu, không gọi API
+- Xây dựng trang danh sách sản phẩm theo danh mục
+- Triển khai chức năng lọc và sắp xếp sản phẩm
+- Tích hợp phân trang (pagination) nếu cần thiết
 
-## Ngày 3: Cart và Checkout (Chưa làm)
+### Giai Đoạn 6: Trang Chi Tiết Sản Phẩm
 
-### Kế hoạch:
+- Phát triển trang chi tiết sản phẩm với gallery ảnh
+- Hiển thị thông tin chi tiết và biến thể sản phẩm
+- Tích hợp chức năng thêm vào giỏ hàng
 
-- Tạo CartPage.jsx: Giỏ hàng cơ bản
-- Tạo CheckoutPage.jsx: Trang thanh toán
-- Thêm logic đơn giản cho cart (local state)
+### Giai Đoạn 7: Tối Ưu UI/UX
 
-### Ghi chú:
+- Cập nhật hình ảnh sản phẩm chất lượng cao
+- Triển khai fallback cho hình ảnh
+- Tối ưu responsive design và hiệu ứng animation
 
-- Chưa có persistence, chỉ UI
+### Giai Đoạn 8: Kiểm Thử Và Triển Khai
 
-## Ngày 4: Login và Register (Chưa làm)
+- Thực hiện kiểm thử toàn diện các chức năng
+- Sửa lỗi và tối ưu hiệu suất
+- Chuẩn bị và thực hiện triển khai production
 
-### Kế hoạch:
+## Tiến Độ Thực Hiện
 
-- Tạo LoginPage.jsx: Form đăng nhập
-- Tạo RegisterPage.jsx: Form đăng ký
-- Thêm validation cơ bản
+### Ngày 1 (3/4/2026)
 
-### Ghi chú:
+- Thiết lập project và cấu trúc thư mục
+- Tạo layout chính, header, footer
+- Cài đặt routing cơ bản
+- Xây dựng giao diện trang chủ với hero section, categories
+- Hiển thị danh sách sản phẩm nổi bật
+- Tạo form đăng nhập với validation
+- Tạo form đăng ký với validation
+- Thiết lập authentication context
 
-- Chưa có auth logic, chỉ UI
+### Ngày 2 (8/4/2026)
 
-## Ngày 5: Profile và Admin (Chưa làm)
-
-### Kế hoạch:
-
-- Tạo ProfilePage.jsx: Thông tin user
-- Tạo AdminPage.jsx: Trang admin cơ bản
-- Thêm navigation cho protected routes
-
-### Ghi chú:
-
-- UI mẫu, chưa có data
-
-## Ngày 6: Thêm API và Kết nối (Chưa làm)
-
-### Kế hoạch:
-
-- Tạo services/apiService.js: Axios config
-- Tạo authService.js, productService.js
-- Kết nối API cho tất cả pages
-- Thêm error handling và loading states
-- Test với backend
-
-### Ghi chú:
-
-- Cuối cùng mới thêm API để tránh lỗi khi backend chưa sẵn sàng
-- Auth flow cơ bản hoàn thành
-- Chưa có logout UI và protected routes
-
-## Ngày 5: Hoàn thiện các trang còn lại
-
-### Hoàn thành:
-
-- CartPage.jsx: Placeholder cho giỏ hàng
-- CheckoutPage.jsx: Placeholder cho thanh toán
-- ProfilePage.jsx: Placeholder cho profile
-- RegisterPage.jsx: Placeholder cho đăng ký
-- AdminPage.jsx: Placeholder cho admin
-- Chạy dev server thành công trên localhost:5174
-
-### Ghi chú:
-
-- Tất cả trang cơ bản đã có placeholder
-- Sẵn sàng phát triển thêm khi backend hoàn thành
-- Giao diện responsive cơ bản
-
-## Tổng kết
-
-- Frontend skeleton hoàn thành theo MVC
-- Kết nối API danh sách sản phẩm và đăng nhập
-- Chuẩn bị giao diện cho giỏ hàng, checkout, profile
-- Có thể mở rộng thêm tính năng theo yêu cầu
+- Tạo dữ liệu sản phẩm local (JSON)
+- Thiết lập cấu trúc dữ liệu sản phẩm
+- Import và chuẩn bị hình ảnh sản phẩm
+- Xây dựng trang danh sách sản phẩm theo category
+- Thêm chức năng lọc theo danh mục
+- Xây dựng trang chi tiết sản phẩm
+- Thêm gallery ảnh, thông tin sản phẩm

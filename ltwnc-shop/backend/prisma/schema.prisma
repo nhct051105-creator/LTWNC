@@ -6,16 +6,16 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
-// Role enumeration
-enum UserRole {
-  ADMIN
-  USER
-  VENDOR
-}
+// Role enumeration - using String for SQLite compatibility
+// enum UserRole {
+//   ADMIN
+//   USER
+//   VENDOR
+// }
 
 // User model
 model User {
@@ -24,7 +24,7 @@ model User {
   password  String
   fullName  String  @map("full_name")
   phone     String?
-  role      UserRole @default(USER)
+  role      String @default("USER")
   isActive  Boolean @default(true) @map("is_active")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")

@@ -2,12 +2,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "../pages/Login";
 import Home from "../pages/Home/Home";
 import RegisterPage from "../pages/Register/Register";
+import CategoryPage from "../pages/CategoryPage/CategoryPage";
+import ProductDetailPage from "../pages/ProductDetail/ProductDetail";
 
 function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/san-pham" element={<CategoryPage />} />
+        <Route path="/nam" element={<CategoryPage />} />
+        <Route path="/nu" element={<CategoryPage />} />
+        <Route path="/giay" element={<CategoryPage />} />
+        <Route path="/phu-kien" element={<CategoryPage />} />
+        <Route path="/product/:id" element={<ProductDetailPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<RegisterPage />} />
       </Routes>
