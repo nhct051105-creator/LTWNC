@@ -12,6 +12,23 @@
 
 ---
 
+## 🛠️ Công nghệ sử dụng
+
+| Thành phần | Công nghệ | Lý do lựa chọn |
+| :--- | :--- | :--- |
+| **Ngôn ngữ Backend** | Node.js + TypeScript | Hiệu suất cao, hệ thống kiểu mạnh giúp detect lỗi sớm, phổ biến trong thực tế |
+| **Framework Backend** | Express 5.x | Nhẹ, linh hoạt, dễ mở rộng, phù hợp cho team học tập |
+| **Database** | PostgreSQL 16 | CSDL quan hệ mạnh mẽ, mã nguồn mở, truy vấn SQL chuẩn, tối ưu tốt |
+| **ORM** | Prisma 4.x | Quản lý schema dễ dàng, migrations tự động, type-safe queries |
+| **Authentication** | JWT + Bcrypt | Bảo mật chuẩn, không lưu session server, dễ scale horizontal |
+| **Frontend** | React 19 + Vite | Framework hiện đại, hot reload nhanh, build optimization |
+| **HTTP Client** | Axios | Interceptor mạnh mẽ, xử lý request/response tập trung |
+| **UI Framework** | React Router + Ant Design | Navigation linh hoạt, components đầy đủ, thiết kế chuyên nghiệp |
+| **Container** | Docker + docker-compose | Môi trường phát triển nhất quán, sẵn sàng production |
+| **Version Control** | Git | Quản lý code, commit convention rõ ràng cho team |
+
+---
+
 ## 📋 Nội dung chính
 
 ### 👨‍💻 Công việc đã hoàn tất
