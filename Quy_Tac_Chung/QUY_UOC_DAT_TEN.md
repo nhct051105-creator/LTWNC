@@ -7,9 +7,9 @@
 - Tên thư mục nên phản ánh đúng chức năng, ví dụ: `auth`, `product`, `order`, `shared`.
 
 ## 2) Quy ước commit message
-- Dùng định dạng: `type: mo_ta_ngan`
+- Dùng định dạng: `type: mo_ta_ngan` (hậu tố phải viết bằng tiếng Việt)
 - Các type: `feat`, `fix`, `refactor`, `chore`, `docs`, `style`, `test`
-- Ví dụ: `feat: add product search`, `fix: resolve login bug`, `chore: update dependencies`
+- Ví dụ: `feat: thêm tìm kiếm sản phẩm`, `fix: sửa lỗi đăng nhập`, `chore: cập nhật dependencies`
 - Không dùng commit message quá dài hoặc không rõ mục tiêu.
 
 ## 3) Tên migration và seed
